@@ -12,14 +12,14 @@
     <p th:text="'错误信息：'+${message}" style="color: red;font-weight: 600;"></p>
     <p th:text="'请求地址：'+${url}"></p>
     <h2>报告问题</h2>
-    <a href="https://github.com/newbee-ltd/newbee-mall/issues/new" target="_blank" style="color: #1baeae">提交issue</a>&nbsp;&nbsp;&nbsp;&nbsp;
+    <a href="https://github.com/newbee-ltd/newbee-mall/issues/new" target="_blank" style="color: #BA2423">提交issue</a>&nbsp;&nbsp;&nbsp;&nbsp;
     <h2>异常堆栈跟踪日志</h2>
     <div th:each="string:${stackTrace}">
         <small><th:block th:text="${string}"></th:block></small>
     </div>
     <h2>Copy Right</h2>
-    <p th:text="'author：'+${author}" style="color: #1baeae;"></p>
-    <p th:text="'ltd：'+${ltd}" style="color: #1baeae;"></p>
+    <p th:text="'author：'+${author}" style="color: #BA2423;"></p>
+    <p th:text="'ltd：'+${ltd}" style="color: #BA2423;"></p>
 </div>
 </body>
 </html>
