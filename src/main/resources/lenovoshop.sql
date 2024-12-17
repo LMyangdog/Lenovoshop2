@@ -1,17 +1,17 @@
 /*
- Navicat MySQL Dump SQL
+ Navicat Premium Data Transfer
 
- Source Server         : localhost_3306
+ Source Server         : lenovo
  Source Server Type    : MySQL
- Source Server Version : 50717 (5.7.17-log)
+ Source Server Version : 80040 (8.0.40)
  Source Host           : localhost:3306
- Source Schema         : newbeemall
+ Source Schema         : lenovoshop
 
  Target Server Type    : MySQL
- Target Server Version : 50717 (5.7.17-log)
+ Target Server Version : 80040 (8.0.40)
  File Encoding         : 65001
 
- Date: 11/12/2024 16:39:28
+ Date: 17/12/2024 22:45:36
 */
 
 SET NAMES utf8mb4;
@@ -22,13 +22,13 @@ SET FOREIGN_KEY_CHECKS = 0;
 -- ----------------------------
 DROP TABLE IF EXISTS `tb_newbee_mall_admin_user`;
 CREATE TABLE `tb_newbee_mall_admin_user`  (
-  `admin_user_id` int(11) NOT NULL AUTO_INCREMENT COMMENT '管理员id',
-  `login_user_name` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '管理员登陆名称',
-  `login_password` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '管理员登陆密码',
-  `nick_name` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '管理员显示昵称',
-  `locked` tinyint(4) NULL DEFAULT 0 COMMENT '是否锁定 0未锁定 1已锁定无法登陆',
+  `admin_user_id` int NOT NULL AUTO_INCREMENT COMMENT '管理员id',
+  `login_user_name` varchar(50) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NOT NULL COMMENT '管理员登陆名称',
+  `login_password` varchar(50) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NOT NULL COMMENT '管理员登陆密码',
+  `nick_name` varchar(50) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NOT NULL COMMENT '管理员显示昵称',
+  `locked` tinyint NULL DEFAULT 0 COMMENT '是否锁定 0未锁定 1已锁定无法登陆',
   PRIMARY KEY (`admin_user_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 4 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 4 CHARACTER SET = utf8mb3 COLLATE = utf8mb3_general_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of tb_newbee_mall_admin_user
@@ -42,17 +42,17 @@ INSERT INTO `tb_newbee_mall_admin_user` VALUES (3, 'newbee-admin2', 'e10adc3949b
 -- ----------------------------
 DROP TABLE IF EXISTS `tb_newbee_mall_carousel`;
 CREATE TABLE `tb_newbee_mall_carousel`  (
-  `carousel_id` int(11) NOT NULL AUTO_INCREMENT COMMENT '首页轮播图主键id',
-  `carousel_url` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL DEFAULT '' COMMENT '轮播图',
-  `redirect_url` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL DEFAULT '\'##\'' COMMENT '点击后的跳转地址(默认不跳转)',
-  `carousel_rank` int(11) NOT NULL DEFAULT 0 COMMENT '排序值(字段越大越靠前)',
-  `is_deleted` tinyint(4) NOT NULL DEFAULT 0 COMMENT '删除标识字段(0-未删除 1-已删除)',
+  `carousel_id` int NOT NULL AUTO_INCREMENT COMMENT '首页轮播图主键id',
+  `carousel_url` varchar(100) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NOT NULL DEFAULT '' COMMENT '轮播图',
+  `redirect_url` varchar(100) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NOT NULL DEFAULT '\'##\'' COMMENT '点击后的跳转地址(默认不跳转)',
+  `carousel_rank` int NOT NULL DEFAULT 0 COMMENT '排序值(字段越大越靠前)',
+  `is_deleted` tinyint NOT NULL DEFAULT 0 COMMENT '删除标识字段(0-未删除 1-已删除)',
   `create_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
-  `create_user` int(11) NOT NULL DEFAULT 0 COMMENT '创建者id',
+  `create_user` int NOT NULL DEFAULT 0 COMMENT '创建者id',
   `update_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '修改时间',
-  `update_user` int(11) NOT NULL DEFAULT 0 COMMENT '修改者id',
+  `update_user` int NOT NULL DEFAULT 0 COMMENT '修改者id',
   PRIMARY KEY (`carousel_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 8 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 8 CHARACTER SET = utf8mb3 COLLATE = utf8mb3_general_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of tb_newbee_mall_carousel
@@ -65,18 +65,18 @@ INSERT INTO `tb_newbee_mall_carousel` VALUES (5, 'https://newbee-mall.oss-cn-bei
 -- ----------------------------
 DROP TABLE IF EXISTS `tb_newbee_mall_goods_category`;
 CREATE TABLE `tb_newbee_mall_goods_category`  (
-  `category_id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '分类id',
-  `category_level` tinyint(4) NOT NULL DEFAULT 0 COMMENT '分类级别(1-一级分类 2-二级分类 3-三级分类)',
-  `parent_id` bigint(20) NOT NULL DEFAULT 0 COMMENT '父分类id',
-  `category_name` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL DEFAULT '' COMMENT '分类名称',
-  `category_rank` int(11) NOT NULL DEFAULT 0 COMMENT '排序值(字段越大越靠前)',
-  `is_deleted` tinyint(4) NOT NULL DEFAULT 0 COMMENT '删除标识字段(0-未删除 1-已删除)',
+  `category_id` bigint NOT NULL AUTO_INCREMENT COMMENT '分类id',
+  `category_level` tinyint NOT NULL DEFAULT 0 COMMENT '分类级别(1-一级分类 2-二级分类 3-三级分类)',
+  `parent_id` bigint NOT NULL DEFAULT 0 COMMENT '父分类id',
+  `category_name` varchar(50) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NOT NULL DEFAULT '' COMMENT '分类名称',
+  `category_rank` int NOT NULL DEFAULT 0 COMMENT '排序值(字段越大越靠前)',
+  `is_deleted` tinyint NOT NULL DEFAULT 0 COMMENT '删除标识字段(0-未删除 1-已删除)',
   `create_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
-  `create_user` int(11) NOT NULL DEFAULT 0 COMMENT '创建者id',
+  `create_user` int NOT NULL DEFAULT 0 COMMENT '创建者id',
   `update_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '修改时间',
-  `update_user` int(11) NULL DEFAULT 0 COMMENT '修改者id',
+  `update_user` int NULL DEFAULT 0 COMMENT '修改者id',
   PRIMARY KEY (`category_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 157 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 157 CHARACTER SET = utf8mb3 COLLATE = utf8mb3_general_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of tb_newbee_mall_goods_category
@@ -229,24 +229,24 @@ INSERT INTO `tb_newbee_mall_goods_category` VALUES (156, 3, 89, '电脑故障检
 -- ----------------------------
 DROP TABLE IF EXISTS `tb_newbee_mall_goods_info`;
 CREATE TABLE `tb_newbee_mall_goods_info`  (
-  `goods_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT COMMENT '商品表主键id',
-  `goods_name` varchar(200) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL DEFAULT '' COMMENT '商品名',
-  `goods_intro` varchar(200) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL DEFAULT '' COMMENT '商品简介',
-  `goods_category_id` bigint(20) NOT NULL DEFAULT 0 COMMENT '关联分类id',
-  `goods_cover_img` varchar(200) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL DEFAULT '/admin/dist/img/no-img.png' COMMENT '商品主图',
-  `goods_carousel` varchar(500) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL DEFAULT '/admin/dist/img/no-img.png' COMMENT '商品轮播图',
-  `goods_detail_content` text CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '商品详情',
-  `original_price` int(11) NOT NULL DEFAULT 1 COMMENT '商品价格',
-  `selling_price` int(11) NOT NULL DEFAULT 1 COMMENT '商品实际售价',
-  `stock_num` int(11) NOT NULL DEFAULT 0 COMMENT '商品库存数量',
-  `tag` varchar(20) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL DEFAULT '' COMMENT '商品标签',
-  `goods_sell_status` tinyint(4) NOT NULL DEFAULT 0 COMMENT '商品上架状态 0-下架 1-上架',
-  `create_user` int(11) NOT NULL DEFAULT 0 COMMENT '添加者主键id',
+  `goods_id` bigint UNSIGNED NOT NULL AUTO_INCREMENT COMMENT '商品表主键id',
+  `goods_name` varchar(200) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NOT NULL DEFAULT '' COMMENT '商品名',
+  `goods_intro` varchar(200) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NOT NULL DEFAULT '' COMMENT '商品简介',
+  `goods_category_id` bigint NOT NULL DEFAULT 0 COMMENT '关联分类id',
+  `goods_cover_img` varchar(200) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NOT NULL DEFAULT '/admin/dist/img/no-img.png' COMMENT '商品主图',
+  `goods_carousel` varchar(500) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NOT NULL DEFAULT '/admin/dist/img/no-img.png' COMMENT '商品轮播图',
+  `goods_detail_content` text CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NOT NULL COMMENT '商品详情',
+  `original_price` int NOT NULL DEFAULT 1 COMMENT '商品价格',
+  `selling_price` int NOT NULL DEFAULT 1 COMMENT '商品实际售价',
+  `stock_num` int NOT NULL DEFAULT 0 COMMENT '商品库存数量',
+  `tag` varchar(20) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NOT NULL DEFAULT '' COMMENT '商品标签',
+  `goods_sell_status` tinyint NOT NULL DEFAULT 0 COMMENT '商品上架状态 0-下架 1-上架',
+  `create_user` int NOT NULL DEFAULT 0 COMMENT '添加者主键id',
   `create_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '商品添加时间',
-  `update_user` int(11) NOT NULL DEFAULT 0 COMMENT '修改者主键id',
+  `update_user` int NOT NULL DEFAULT 0 COMMENT '修改者主键id',
   `update_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '商品修改时间',
   PRIMARY KEY (`goods_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 10907 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 10985 CHARACTER SET = utf8mb3 COLLATE = utf8mb3_general_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of tb_newbee_mall_goods_info
@@ -826,25 +826,103 @@ INSERT INTO `tb_newbee_mall_goods_info` VALUES (10895, 'HUAWEI Mate 30 4000万�
 INSERT INTO `tb_newbee_mall_goods_info` VALUES (10903, '华为 HUAWEI P40 冰霜银 全网通5G手机', '麒麟990 5G SoC芯片 5000万超感知徕卡三摄 30倍数字变焦 6GB+128GB', 46, 'https://newbee-mall.oss-cn-beijing.aliyuncs.com/images/p40-silver.png', 'https://newbee-mall.oss-cn-beijing.aliyuncs.com/images/p40-silver.png', '<img src=\"https://newbee-mall.oss-cn-beijing.aliyuncs.com/images/p40-detail.jpg\" alt=\"\" />', 4399, 4399, 1997, '超感知影像', 0, 0, '2020-03-27 10:07:37', 0, '2020-10-13 10:41:59');
 INSERT INTO `tb_newbee_mall_goods_info` VALUES (10905, 'Apple iPhone12 (A2404) 蓝色 支持移动联通电信5G 双卡双待手机', 'A14仿生芯片，6.1英寸超视网膜XDR显示屏，超瓷晶面板，升维大提速，现实力登场！', 47, 'https://newbee-mall.oss-cn-beijing.aliyuncs.com/images/iPhone12-blue.png', 'https://newbee-mall.oss-cn-beijing.aliyuncs.com/images/iPhone12-blue.png', '<img src=\"https://newbee-mall.oss-cn-beijing.aliyuncs.com/images/iphone12-detail.jpg\" alt=\"\" />', 6299, 6299, 1000, '升维，大提速。', 0, 0, '2020-10-14 10:30:06', 0, '2020-10-14 10:30:06');
 INSERT INTO `tb_newbee_mall_goods_info` VALUES (10906, 'apple iphone12 pro & #40;a2408& #41; 128gb 海蓝色 支持移动联通电信5g 双卡双待手机', 'a14仿生芯片，6.1英寸超视网膜xdr显示屏，激光雷达扫描仪，超瓷晶面板，现实力登场！', 20, 'https://newbee-mall.oss-cn-beijing.aliyuncs.com/images/iphone-12-pro-blue-hero.png', 'https://newbee-mall.oss-cn-beijing.aliyuncs.com/images/iphone-12-pro-blue-hero.png', '<img src=\"https://newbee-mall.oss-cn-beijing.aliyuncs.com/images/iphone12pro-detail.jpg\" alt=\"\" data-href=\"\" style=\"\"/>', 8499, 8499, 2000, '自我再飞跃', 0, 0, '2020-10-14 10:32:55', 0, '2024-12-11 15:28:22');
+INSERT INTO `tb_newbee_mall_goods_info` VALUES (10907, '拯救者y7000p 2024 ai元启16英寸', '第14代智能英特尔®酷睿™ i7-14700hx/wind0ws 11 家庭中文版/16英寸/16g（16*1）/1t ssd/rtx™ 4070 8g独显/月蚀灰', 20, 'http://localhost:8080/upload/20241216_14424679.png', 'http://localhost:8080/upload/20241216_14424679.png', '<p><br></p>', 1, 9799, 0, '【国家补贴20%】', 0, 0, '2024-12-16 14:43:32', 0, '2024-12-16 14:43:32');
+INSERT INTO `tb_newbee_mall_goods_info` VALUES (10908, '联想& #40;lenovo& #41;拯救者y9000x 2024 ai元启 16英寸电竞游戏本电脑', '第14代智能英特尔®酷睿™ i9-14900hx/wind0ws 11 家庭中文版/16英寸/32g（16x2）/1t ssd/rtx™ 4070 8g独显/冰魄白', 21, 'http://localhost:8080/upload/20241216_14492971.png', 'http://localhost:8080/upload/20241216_14492971.png', '<p><br></p>', 1, 15499, 0, '【国家补贴20%叠加教育特惠折上折 】', 0, 0, '2024-12-16 14:50:04', 0, '2024-12-16 14:50:04');
+INSERT INTO `tb_newbee_mall_goods_info` VALUES (10909, '联想& #40;lenovo& #41;拯救者y7000p 2024 ai元启16英寸电竞游戏笔记本', '第14代智能英特尔®酷睿™ i7-14700hx/wind0ws 11 家庭中文版/16英寸/16g（16*1）/1t ssd/rtx™ 4070 8g独显/月蚀灰', 22, 'http://localhost:8080/upload/20241216_14502886.png', 'http://localhost:8080/upload/20241216_14502886.png', '<p><br></p>', 1, 9799, 0, '政府补贴，折旧换新，比省更省', 0, 0, '2024-12-16 14:50:52', 0, '2024-12-16 14:50:52');
+INSERT INTO `tb_newbee_mall_goods_info` VALUES (10910, '联想& #40;lenovo& #41;拯救者y7000p 2024 ai元启16英寸电竞游戏笔记本', '第14代智能英特尔®酷睿™ i7-14700hx/wind0ws 11 家庭中文版/16英寸/16g（16*1）/1t ssd/rtx™ 4070 8g独显/月蚀灰', 22, 'http://localhost:8080/upload/20241216_14534983.png', 'http://localhost:8080/upload/20241216_14534983.png', '<p><br></p>', 1, 9799, 0, '1年只换不修', 0, 0, '2024-12-16 14:53:50', 0, '2024-12-16 14:53:50');
+INSERT INTO `tb_newbee_mall_goods_info` VALUES (10911, '联想& #40;lenovo& #41;小新pro ai元启16英寸轻薄笔记本电脑 鸽子灰', 'amd ryzen 7 8845h/wind0ws 11 家庭中文版/16.0英寸/32g/1t ssd/集成显卡/鸽子灰', 32, 'http://localhost:8080/upload/20241216_14542477.png', 'http://localhost:8080/upload/20241216_14542477.png', '<p><br></p>', 1, 6199, 0, 'ai喷绘，限时0元', 0, 0, '2024-12-16 14:55:00', 0, '2024-12-16 14:55:00');
+INSERT INTO `tb_newbee_mall_goods_info` VALUES (10912, '联想& #40;lenovo& #41;小新pro ai元启14英寸轻薄笔记本电 鸽子灰', '英特尔酷睿 ultra 9/wind0ws 11 家庭中文版/14英寸/32gb/1t ssd/集成显卡/鸽子灰', 33, 'http://localhost:8080/upload/20241216_14552192.png', 'http://localhost:8080/upload/20241216_14552192.png', '<p><br></p>', 1, 6999, 0, '教育特惠', 0, 0, '2024-12-16 14:55:54', 0, '2024-12-16 14:55:54');
+INSERT INTO `tb_newbee_mall_goods_info` VALUES (10913, '联想& #40;lenovo& #41;小新15 air 2025款 15.3英寸轻薄笔记本电脑', 'amd ryzen 7 7735hs/wind0ws 11 家庭中文版/15.3英寸/16g/512g ssd/集成显卡/霜雪银', 34, 'http://localhost:8080/upload/20241216_1456178.png', 'http://localhost:8080/upload/20241216_1456178.png', '<p><br></p>', 1, 4399, 0, '折旧换新，比省更省', 0, 0, '2024-12-16 14:56:43', 0, '2024-12-16 14:56:43');
+INSERT INTO `tb_newbee_mall_goods_info` VALUES (10914, '联想& #40;lenovo& #41;小新13 air 2025款 13.3英寸轻薄笔记本电脑', 'amd ryzen 7 7735hs/wind0ws 11 家庭中文版/13.3英寸/16g/512g ssd/集成显卡/霜雪银', 35, 'http://localhost:8080/upload/20241216_14571012.png', 'http://localhost:8080/upload/20241216_14571012.png', '<p><br></p>', 1, 4599, 0, '政府补贴，折旧换新', 0, 0, '2024-12-16 14:57:35', 0, '2024-12-16 14:57:35');
+INSERT INTO `tb_newbee_mall_goods_info` VALUES (10915, '联想yoga air 15 aura 英特尔酷睿ultra 7-258v ai元启笔记本电脑', '英特尔® 酷睿™ ultra 7/wind0ws 11 家庭中文版/15.3英寸/32gb/1t ssd/集成显卡/信风灰', 45, 'http://localhost:8080/upload/20241216_14575215.png', 'http://localhost:8080/upload/20241216_14575215.png', '<p><br></p>', 1, 9999, 0, '【国家补贴20%叠加教育特惠折上折 】', 0, 0, '2024-12-16 14:58:21', 0, '2024-12-16 14:58:21');
+INSERT INTO `tb_newbee_mall_goods_info` VALUES (10916, '联想yoga pro 14 锐龙 ai元启版 14.5英寸轻薄笔记本电脑 信风灰', 'amd 锐龙™ ai 9 365/wind0ws 11 家庭中文版/14.5英寸/32g/1t ssd/集成显卡/信风灰', 46, 'http://localhost:8080/upload/20241216_14584154.png', 'http://localhost:8080/upload/20241216_14584154.png', '<p><br></p>', 1, 8999, 0, '联想自营', 0, 0, '2024-12-16 14:59:16', 0, '2024-12-16 14:59:16');
+INSERT INTO `tb_newbee_mall_goods_info` VALUES (10917, '联想 yoga air 14s 骁龙 ai元启 14.5英寸轻薄笔记本电脑 浅海贝', '高通骁龙 x elite/wind0ws 11 家庭中文版/32g/1t ssd/集成显卡/浅海贝', 49, 'http://localhost:8080/upload/20241216_14594489.png', 'http://localhost:8080/upload/20241216_14594489.png', '<p><br></p>', 1, 9999, 0, 'c面刻字限时0元', 0, 0, '2024-12-16 15:00:06', 0, '2024-12-16 15:00:06');
+INSERT INTO `tb_newbee_mall_goods_info` VALUES (10918, 'thinkpad x1 carbon aura 全互联本 ai元启版 1acd', '英特尔酷睿ultra 7 258v/ pcie-nvme 固态硬盘gp4/英特尔arc xe2/14英寸2.8k 广视角oled背光显示屏 120hz刷新率 400nit/沉浸黑', 76, 'http://localhost:8080/upload/20241216_15015281.png', 'http://localhost:8080/upload/20241216_15015281.png', '<p><br></p>', 1, 16999, 0, '支持 以旧换新', 0, 0, '2024-12-16 15:02:33', 0, '2024-12-16 15:02:33');
+INSERT INTO `tb_newbee_mall_goods_info` VALUES (10919, 'thinkcentre neo p600 英特尔酷睿i7 商用台式机电脑', '第12代英特尔酷睿i7-12700/wind0ws 11 家庭中文版/16gb/512gb ssd+1t hdd/无光驱/gtx1660 super 6gb gddr6/定制升级款', 115, 'http://localhost:8080/upload/20241216_15025250.png', 'http://localhost:8080/upload/20241216_15025250.png', '<p><br></p>', 1, 7299, 0, '花呗分期', 0, 0, '2024-12-16 15:03:35', 0, '2024-12-16 15:03:35');
+INSERT INTO `tb_newbee_mall_goods_info` VALUES (10920, 'thinkplus 口红电源 gan 65w', '升级企业会员享2000元企业礼券，首单享加赠。点击升级', 116, 'http://localhost:8080/upload/20241216_15064520.png', 'http://localhost:8080/upload/20241216_15064520.png', '<p><br></p>', 1, 199, 0, '政府补贴，折旧换新', 0, 0, '2024-12-16 15:06:51', 0, '2024-12-16 15:07:09');
+INSERT INTO `tb_newbee_mall_goods_info` VALUES (10921, 'thinkplus 都市流行双肩包 玄武黑', '使用联想app下单，享受更多优惠', 117, 'http://localhost:8080/upload/20241216_15072681.png', 'http://localhost:8080/upload/20241216_15072681.png', '<p><br></p>', 1, 228, 0, '信用卡分期', 0, 0, '2024-12-16 15:07:51', 0, '2024-12-16 15:07:51');
+INSERT INTO `tb_newbee_mall_goods_info` VALUES (10922, '联想yoga pad pro ai元启 12.7英寸 影音办公学习平板电脑 浅海贝', '骁龙 8 gen3/8核/android /12.7英寸/16gb/512gb/wifi版/浅海贝/联想手写笔pro+磁吸键盘套装', 77, 'http://localhost:8080/upload/20241216_1508234.png', 'http://localhost:8080/upload/20241216_1508234.png', '<p><br></p>', 1, 4799, 0, '政府补贴，折旧换新', 0, 0, '2024-12-16 15:08:44', 0, '2024-12-16 15:08:44');
+INSERT INTO `tb_newbee_mall_goods_info` VALUES (10923, '联想平板小新pad 2024 11英寸 学习办公娱乐影音平板电脑 烟霞紫', 'qualcomm snapdragon 685/8核/android系统/11英寸/8g/256g/wifi版/烟霞紫', 120, 'http://localhost:8080/upload/20241216_15090714.png', 'http://localhost:8080/upload/20241216_15090714.png', '<p><br></p>', 1, 1099, 0, '【学生认证且购机送屏幕贴膜】', 0, 0, '2024-12-16 15:09:34', 0, '2024-12-16 15:09:34');
+INSERT INTO `tb_newbee_mall_goods_info` VALUES (10924, '联想拯救者y700 2025 8.8英寸超控版游戏平板 碳晶黑', '第三代 骁龙8/8核/android 14 操作系统/8.8英寸/16gb/512gb/wifi版/碳晶黑', 122, 'http://localhost:8080/upload/20241216_15095640.png', 'http://localhost:8080/upload/20241216_15095640.png', '<p><br></p>', 1, 3799, 0, '政府补贴，折旧换新，比省更省', 0, 0, '2024-12-16 15:10:19', 0, '2024-12-16 15:10:19');
+INSERT INTO `tb_newbee_mall_goods_info` VALUES (10925, '小新pad pro 12.7 保护夹& #40;二代& #41; 灰色', '双角度支撑、翻盖唤醒、独立笔槽、精选酥皮材质', 123, 'http://localhost:8080/upload/20241216_15103941.png', 'http://localhost:8080/upload/20241216_15103941.png', '<p><br></p>', 1, 89, 0, '白条分期', 0, 0, '2024-12-16 15:11:08', 0, '2024-12-16 15:11:08');
+INSERT INTO `tb_newbee_mall_goods_info` VALUES (10926, '联想moto s50 12gb+512gb 好柿橙', '金刚品质 | 实力出彩 | 身经百战，抗严寒战酷暑', 78, 'http://localhost:8080/upload/20241216_15124465.png', 'http://localhost:8080/upload/20241216_15124465.png', '<p><br></p>', 1, 2299, 0, '6期免息', 0, 0, '2024-12-16 15:13:11', 0, '2024-12-16 15:13:11');
+INSERT INTO `tb_newbee_mall_goods_info` VALUES (10927, 'moto buds 无线耳机 天水碧', 'moto buds无线耳机', 131, 'http://localhost:8080/upload/20241216_15132949.png', 'http://localhost:8080/upload/20241216_15132949.png', '<p><br></p>', 1, 299, 0, '花呗分期', 0, 0, '2024-12-16 15:13:53', 0, '2024-12-16 15:13:53');
+INSERT INTO `tb_newbee_mall_goods_info` VALUES (10928, '懂陪伴', '含1500分钟全国通话，1500mb上网流量。5元话费立即到账，资源永不清零。本产品不支持7天无理由退换货。产品包邮（西藏、新疆暂不提供邮寄服务）', 134, 'http://localhost:8080/upload/20241216_15141861.png', 'http://localhost:8080/upload/20241216_15141861.png', '<p><br></p>', 1, 150, 0, '资源永不清零', 0, 0, '2024-12-16 15:14:39', 0, '2024-12-16 15:14:39');
+INSERT INTO `tb_newbee_mall_goods_info` VALUES (10929, '联想小新100gt智能投影 樱花白', '500cvia流明| 360°云台| 2+32g大内存丨ai智能语音', 82, 'http://localhost:8080/upload/20241216_15145917.png', 'http://localhost:8080/upload/20241216_15145917.png', '<p><br></p>', 1, 1049, 0, '14天无忧退换', 0, 0, '2024-12-16 15:15:22', 0, '2024-12-16 15:15:22');
+INSERT INTO `tb_newbee_mall_goods_info` VALUES (10930, '联想个人云x1s nas网络云存储 【4盘位+1扩展 无盘版】', 'intel四核cpu+8g内存 私有云 家庭网盘企业硬盘', 143, 'http://localhost:8080/upload/20241216_15154184.png', 'http://localhost:8080/upload/20241216_15154184.png', '<p><br></p>', 1, 2266, 0, '白条免息，0手续费', 0, 0, '2024-12-16 15:16:13', 0, '2024-12-16 15:16:13');
+INSERT INTO `tb_newbee_mall_goods_info` VALUES (10931, '联想智能门锁f2', '3d人脸识别丨7大开锁方式', 145, 'http://localhost:8080/upload/20241216_1516337.png', 'http://localhost:8080/upload/20241216_1516337.png', '<p><br></p>', 1, 2999, 0, '政府补贴，折旧换新，比省更省', 0, 0, '2024-12-16 15:17:02', 0, '2024-12-16 15:17:02');
+INSERT INTO `tb_newbee_mall_goods_info` VALUES (10932, '【智能照明】联想银之光吸顶灯（24w）', '全光谱led光源丨ra≥98高显色指数丨无有害蓝光', 147, 'http://localhost:8080/upload/20241216_1517193.png', 'http://localhost:8080/upload/20241216_1517193.png', '<p><br></p>', 1, 199, 0, '增值业务 支持 以旧换新', 0, 0, '2024-12-16 15:17:40', 0, '2024-12-16 15:17:40');
+INSERT INTO `tb_newbee_mall_goods_info` VALUES (10933, 'yoga life 无线吸拖一体机 v7 银离子滤网', '联想自营联想发货&售后', 149, 'http://localhost:8080/upload/20241216_1517566.png', 'http://localhost:8080/upload/20241216_1517566.png', '<p><br></p>', 1, 99, 0, '无线吸拖一体机 v7 硬毛滚刷', 0, 0, '2024-12-16 15:18:30', 0, '2024-12-16 15:18:30');
+INSERT INTO `tb_newbee_mall_goods_info` VALUES (10934, '联想小新k2有线游戏键盘 （石英粉）', 'rgb灯效丨防尘防水丨按键静音', 86, 'http://localhost:8080/upload/20241216_15184618.png', 'http://localhost:8080/upload/20241216_15184618.png', '<p><br></p>', 1, 59, 0, '政府补贴，折旧换新，比省更省', 0, 0, '2024-12-16 15:19:03', 0, '2024-12-16 15:19:03');
+INSERT INTO `tb_newbee_mall_goods_info` VALUES (10935, '联想小新固态u盘 滑板限定款', 'usb-a&c 高速双接口、128g大容量、创意指尖滑板', 151, 'http://localhost:8080/upload/20241216_15191917.png', 'http://localhost:8080/upload/20241216_15191917.png', '<p><br></p>', 1, 139, 0, '滑板限定', 0, 0, '2024-12-16 15:19:41', 0, '2024-12-16 15:19:41');
+INSERT INTO `tb_newbee_mall_goods_info` VALUES (10936, '联想显示器小新24 23.8英寸fhd广视角护眼屏', '高刷屏、ips优质面板、广视角护眼屏丨享多品牌全品类以旧换新补贴，买台机加购显示器立减100元', 154, 'http://localhost:8080/upload/20241216_15195869.png', 'http://localhost:8080/upload/20241216_15195869.png', '<p><br></p>', 1, 569, 0, '【晒单好礼】【学生认证购机送台历】', 0, 0, '2024-12-16 15:20:23', 0, '2024-12-16 15:20:23');
+INSERT INTO `tb_newbee_mall_goods_info` VALUES (10937, '【lenovo 专家1对1】重装系统', '本服务通过远程控制桌面进行重装系统操作，让电脑重新恢复活力，速度更快；清除电脑存在的潜在威胁，让你的数据更安全', 90, 'http://localhost:8080/upload/20241216_15205479.png', 'http://localhost:8080/upload/20241216_15205479.png', '<p><br></p>', 1, 108, 0, '（注：此产品不包含正版系统的激活）', 0, 0, '2024-12-16 15:21:18', 0, '2024-12-16 15:21:18');
+INSERT INTO `tb_newbee_mall_goods_info` VALUES (10938, '笔记本深度拆机清洁服务（到店）', '不限品牌（苹果除外）为笔记本提供保养维护服务，包含拆机，风扇，键盘、屏幕、机身表面等，到店使用', 155, 'http://localhost:8080/upload/20241216_15213965.png', 'http://localhost:8080/upload/20241216_15213965.png', '<p><br></p>', 1, 64, 0, '清洁保养全家桶', 0, 0, '2024-12-16 15:22:00', 0, '2024-12-16 15:22:00');
+INSERT INTO `tb_newbee_mall_goods_info` VALUES (10939, '【多品牌适用-远程服务】5次/年调试服务', '远程支持为用户提供提供pc局域网系统的故障诊断，无线调试、故障诊断服务；pc wind0ws 系统安装、维护，常用软件维护、邮箱客户端安装、电脑病毒', 156, 'http://localhost:8080/upload/20241216_1522150.png', 'http://localhost:8080/upload/20241216_1522150.png', '<p><br></p>', 1, 399, 0, '远程管家vip服务', 0, 0, '2024-12-16 15:22:42', 0, '2024-12-16 15:22:42');
+INSERT INTO `tb_newbee_mall_goods_info` VALUES (10940, '联想& #40;lenovo& #41;拯救者r9000p 16英寸电竞游戏本笔记本电脑 碳晶灰', 'amd ryzen 9 7945hx/wind0ws 11 家庭中文版/16英寸/16gb& #40;16*1& #41;/1t ssd/ rtx™ 4060 8gb独显/碳晶灰', 23, 'http://localhost:8080/upload/20241217_21454528.png', 'http://localhost:8080/upload/20241217_21454528.png', '<p><br></p>', 1, 9299, 0, '政府补贴，折旧换新', 0, 0, '2024-12-17 21:46:15', 0, '2024-12-17 21:46:15');
+INSERT INTO `tb_newbee_mall_goods_info` VALUES (10941, '联想拯救者 y7000', '搭载英特尔8代处理器，高性能显卡，win10系统，共有17个型号。', 24, 'http://localhost:8080/upload/20241217_21470233.png', 'http://localhost:8080/upload/20241217_21470233.png', '<p><br></p>', 1, 7399, 0, '高性能', 0, 0, '2024-12-17 21:47:48', 0, '2024-12-17 21:47:48');
+INSERT INTO `tb_newbee_mall_goods_info` VALUES (10942, '联想& #40;lenovo& #41;拯救者r7000 15.6英寸电竞游戏本笔记本电脑 钛晶灰', 'amd ryzen 7 8745h/wind0ws 11 家庭中文版/15.6英寸/16gb（8+8）/512g ssd/ rtx™ 4050 6gb独显/钛晶灰', 25, 'http://localhost:8080/upload/20241217_21481181.png', 'http://localhost:8080/upload/20241217_21481181.png', '<p><br></p>', 1, 6699, 0, '以旧换新', 0, 0, '2024-12-17 21:48:42', 0, '2024-12-17 21:48:42');
+INSERT INTO `tb_newbee_mall_goods_info` VALUES (10943, '联想& #40;lenovo& #41;拯救者r7000p 2024 16英寸电竞游戏本笔记本 月蚀灰', 'amd ryzen 7 8845h/wind0ws 11 家庭中文版/16英寸/16gb& #40;16*1& #41;/1t ssd/ rtx™ 4060 8gb独显/月蚀灰', 26, 'http://localhost:8080/upload/20241217_21495315.png', 'http://localhost:8080/upload/20241217_21495315.png', '<p><br></p>', 1, 8399, 0, '【国家补贴20%叠加教育特惠折上折 】', 0, 0, '2024-12-17 21:50:14', 0, '2024-12-17 21:50:14');
+INSERT INTO `tb_newbee_mall_goods_info` VALUES (10944, '联想& #40;lenovo& #41;拯救者r9000x 16英寸电竞游戏本笔记本电脑 钛晶灰', 'amd ryzen 7 7840h/wind0ws 11 家庭中文版/16英寸/16gb/1t ssd/ rtx™ 4060 8gb独显/钛晶灰', 27, 'http://localhost:8080/upload/20241217_2150328.png', 'http://localhost:8080/upload/20241217_2150328.png', '<p><br></p>', 1, 11999, 0, '折旧换新，比省更省', 0, 0, '2024-12-17 21:50:52', 0, '2024-12-17 21:50:52');
+INSERT INTO `tb_newbee_mall_goods_info` VALUES (10945, '联想& #40;lenovo& #41;小新16 2024款ai高能轻薄笔记本电脑 霜雪银', '第13代智能英特尔 ® 酷睿™ i5-13420h/wind0ws 11 家庭中文版/16英寸/16g/512g ssd/集成显卡/霜雪银', 36, 'http://localhost:8080/upload/20241217_21515927.png', 'http://localhost:8080/upload/20241217_21515927.png', '<p><br></p>', 1, 4199, 0, '政府补贴，折旧换新', 0, 0, '2024-12-17 21:52:18', 0, '2024-12-17 21:52:18');
+INSERT INTO `tb_newbee_mall_goods_info` VALUES (10946, '联想& #40;lenovo& #41;小新15 2024款15.3英寸轻薄笔记本电脑 霜雪银', '第13代智能英特尔 ® 酷睿™ i7-13620h/wind0ws 11 家庭中文版/15.3英寸/16g/512g ssd/集成显卡/霜雪银', 37, 'http://localhost:8080/upload/20241217_21523982.png', 'http://localhost:8080/upload/20241217_21523982.png', '<p><br></p>', 1, 4599, 0, '政府补贴', 0, 0, '2024-12-17 21:53:12', 0, '2024-12-17 21:53:12');
+INSERT INTO `tb_newbee_mall_goods_info` VALUES (10947, '联想& #40;lenovo& #41;小新14 2024款14英寸高能轻薄笔记本电脑 银', 'amd 锐龙7 8745h/wind0ws 11 家庭中文版/14英寸/16gb/512g ssd/集成显卡/银', 38, 'http://localhost:8080/upload/20241217_21532913.png', 'http://localhost:8080/upload/20241217_21532913.png', '<p><br></p>', 1, 3799, 0, '供应商发货&售后', 0, 0, '2024-12-17 21:53:47', 0, '2024-12-17 21:53:47');
+INSERT INTO `tb_newbee_mall_goods_info` VALUES (10948, '联想 yoga air 14c ai元启 14英寸轻薄360°翻转笔记本 雾海蓝', '英特尔酷睿 ultra 7/wind0ws 11 家庭中文版/14英寸/32gb/1t ssd/集成显卡/雾海蓝', 44, 'http://localhost:8080/upload/20241217_21544523.png', 'http://localhost:8080/upload/20241217_21544523.png', '<p><br></p>', 1, 8999, 0, '白条分期', 0, 0, '2024-12-17 21:55:09', 0, '2024-12-17 21:55:09');
+INSERT INTO `tb_newbee_mall_goods_info` VALUES (10949, '联想 yoga air 14 骁龙 ai元启 14.5英寸轻薄笔记本电脑 浅海贝', '高通骁龙 x elite/wind0ws 11 家庭中文版/32g/1t ssd/集成显卡/浅海贝', 47, 'http://localhost:8080/upload/20241217_2155366.png', 'http://localhost:8080/upload/20241217_2155366.png', '<p><br></p>', 1, 9999, 0, '骁龙x elite/瀚宇蓝', 0, 0, '2024-12-17 21:56:22', 0, '2024-12-17 21:56:22');
+INSERT INTO `tb_newbee_mall_goods_info` VALUES (10950, '联想yoga pro 16s ai元启 16英寸轻薄笔记本电脑 信风灰', '英特尔酷睿 ultra 9/wind0ws 11 家庭中文版/16英寸/32gb/1t ssd/rtx 4060 8g/信风灰', 48, 'http://localhost:8080/upload/20241217_21564433.png', 'http://localhost:8080/upload/20241217_21564433.png', '<p><br></p>', 1, 13999, 0, 'c面刻字限时0元', 0, 0, '2024-12-17 21:57:04', 0, '2024-12-17 21:57:04');
+INSERT INTO `tb_newbee_mall_goods_info` VALUES (10951, '联想yoga book 9i ai元启 13.3英寸双屏360度翻转笔记本电脑', '英特尔酷睿 ultra 7/wind0ws 11 家庭中文版/13.3英寸x2/32gb/1t ssd/集成显卡/雾海蓝', 52, 'http://localhost:8080/upload/20241217_21572455.png', 'http://localhost:8080/upload/20241217_21572455.png', '<p><br></p>', 1, 17999, 0, '联想商家', 0, 0, '2024-12-17 21:57:53', 0, '2024-12-17 21:57:53');
+INSERT INTO `tb_newbee_mall_goods_info` VALUES (10952, '联想yoga pro 14s ai元启 14.5英寸轻薄笔记本电脑 雾海蓝', '英特尔酷睿 ultra 9/wind0ws 11 家庭中文版/14.5英寸/32gb/1t ssd/集成显卡/雾海蓝', 51, 'http://localhost:8080/upload/20241217_21581424.png', 'http://localhost:8080/upload/20241217_21581424.png', '<p><br></p>', 1, 8699, 0, '信用卡分期', 0, 0, '2024-12-17 21:58:41', 0, '2024-12-17 21:58:41');
+INSERT INTO `tb_newbee_mall_goods_info` VALUES (10953, '联想拯救者y9000p 2024 ai元启 16英寸电竞游戏本笔记本电脑', '第14代智能英特尔®酷睿™ i9-14900hx/wind0ws 11 家庭中文版/16英寸/32g（16x2）/1t ssd/rtx™ 4070 8g独显/碳晶灰', 20, 'http://localhost:8080/upload/20241217_22024186.png', 'http://localhost:8080/upload/20241217_22024186.png', '<p><br></p>', 1, 12999, 0, '折旧换新，比省更省', 0, 0, '2024-12-17 22:02:59', 0, '2024-12-17 22:02:59');
+INSERT INTO `tb_newbee_mall_goods_info` VALUES (10954, 'thinkpad t14p 2024 酷睿ultra 9 高性能ai本 元启版', '英特尔酷睿ultra 9 185h/wind0ws 11 家庭中文版/16gb+16gb ddr5/2tb0 ssd/14.5英寸3k 100%dci-p3 430nit 120hz高色域显示屏', 111, 'http://localhost:8080/upload/20241217_22035591.png', 'http://localhost:8080/upload/20241217_22035591.png', '<p><br></p>', 1, 14999, 0, 'wind0ws 11 家庭中文版', 0, 0, '2024-12-17 22:04:28', 0, '2024-12-17 22:04:28');
+INSERT INTO `tb_newbee_mall_goods_info` VALUES (10955, 'thinkpad x13 2024 酷睿ultra 5 ai商旅本 06cd', '英特尔evo平台认证酷睿ultra 5 125h/wind0ws 11 家庭中文版/32gb lpddr5x/1tb0 ssd/intel锐炬xe集显/13.3英寸 /lte版/', 112, 'http://localhost:8080/upload/20241217_22050046.png', 'http://localhost:8080/upload/20241217_22050046.png', '<p><br></p>', 1, 7999, 0, '白条分期', 0, 0, '2024-12-17 22:05:41', 0, '2024-12-17 22:05:41');
+INSERT INTO `tb_newbee_mall_goods_info` VALUES (10956, 'thinkpad t14p 2024 酷睿ultra 9 高性能ai本 元启版', '英特尔酷睿ultra 9 185h/wind0ws 11 家庭中文版/16gb+16gb ddr5/2tb0 ssd/rtx 4050 6g/14.5英寸3k', 113, 'http://localhost:8080/upload/20241217_22060878.png', 'http://localhost:8080/upload/20241217_22060878.png', '<p><br></p>', 1, 14999, 0, '14天无忧退换', 0, 0, '2024-12-17 22:06:37', 0, '2024-12-17 22:06:37');
+INSERT INTO `tb_newbee_mall_goods_info` VALUES (10957, 'thinkpad p16v 2024 英特尔酷睿ultra 7 ai创意设计本 01cd', '全新英特尔酷睿ultra 7 155h/wind0ws 11 家庭中文版/16g+16g/1tb0 m.2 pcie gen4 nvme 固态硬盘/nvidia rtx 1000ada', 114, 'http://localhost:8080/upload/20241217_22070917.png', 'http://localhost:8080/upload/20241217_22070917.png', '<p><br></p>', 1, 15999, 0, '政府补贴', 0, 0, '2024-12-17 22:07:36', 0, '2024-12-17 22:07:36');
+INSERT INTO `tb_newbee_mall_goods_info` VALUES (10958, '联想平板小新pad pro 12.7英寸 学习游戏平板电脑 鸽子灰', 'qualcomm snapdragon 870/8核/android 13 系统/12.7英寸/8gb/256gb/wifi版/鸽子灰', 121, 'http://localhost:8080/upload/20241217_22081782.png', 'http://localhost:8080/upload/20241217_22081782.png', '<p><br></p>', 1, 1799, 0, '花呗分期', 0, 0, '2024-12-17 22:08:41', 0, '2024-12-17 22:08:41');
+INSERT INTO `tb_newbee_mall_goods_info` VALUES (10959, '小新pad 2024钢化膜', '16:00 点前完成下单, 预计 12月20日送', 124, 'http://localhost:8080/upload/20241217_2209217.png', 'http://localhost:8080/upload/20241217_2209217.png', '<p><br></p>', 1, 39, 0, '联想发货&售后', 0, 0, '2024-12-17 22:09:55', 0, '2024-12-17 22:09:55');
+INSERT INTO `tb_newbee_mall_goods_info` VALUES (10960, 'yoga pad pro ai元启 磁吸键盘及支架 雾海蓝', '亲肤材质、一贴即合全场景适配、大触控板支持手势操作', 125, 'http://localhost:8080/upload/20241217_22101943.png', 'http://localhost:8080/upload/20241217_22101943.png', '<p><br></p>', 1, 699, 0, '¥238.59x3期', 0, 0, '2024-12-17 22:10:44', 0, '2024-12-17 22:10:44');
+INSERT INTO `tb_newbee_mall_goods_info` VALUES (10961, '联想手写笔', '可用机型可咨询客服', 126, 'http://localhost:8080/upload/20241217_22111789.png', 'http://localhost:8080/upload/20241217_22111789.png', '<p><br></p>', 1, 179, 0, '运费险', 0, 0, '2024-12-17 22:11:38', 0, '2024-12-17 22:11:38');
+INSERT INTO `tb_newbee_mall_goods_info` VALUES (10962, '联想moto razr 50', '无界热ai | 所见皆美 | 定制大外屏 ，app全屏无界运行', 127, 'http://localhost:8080/upload/20241217_22142661.png', 'http://localhost:8080/upload/20241217_22142661.png', '<p><br></p>', 1, 5899, 0, '6期免息', 0, 0, '2024-12-17 22:14:27', 0, '2024-12-17 22:14:27');
+INSERT INTO `tb_newbee_mall_goods_info` VALUES (10963, '企业购 moto razr 50', '内外衔接，自然顺滑 | 灵动信息，了如指掌', 128, 'http://localhost:8080/upload/20241217_22152543.png', 'http://localhost:8080/upload/20241217_22152543.png', '<p><br></p>', 1, 3999, 0, '14天无忧退换', 0, 0, '2024-12-17 22:15:51', 0, '2024-12-17 22:15:51');
+INSERT INTO `tb_newbee_mall_goods_info` VALUES (10964, '联想moto s50 12gb+512gb 花木蓝', '金刚品质 | 实力出彩 | 身经百战，抗严寒战酷暑', 129, 'http://localhost:8080/upload/20241217_22161797.png', 'http://localhost:8080/upload/20241217_22161797.png', '<p><br></p>', 1, 2299, 0, '政府补贴，折旧换新，比省更省', 0, 0, '2024-12-17 22:16:40', 0, '2024-12-17 22:16:40');
+INSERT INTO `tb_newbee_mall_goods_info` VALUES (10965, '联想moto x50 ultra 12gb+512gb 远黛墨 ai元启版', '100倍潜望追光ai影像 | 联想小天ai个人智能体 | 第三代骁龙旗舰处理器', 130, 'http://localhost:8080/upload/20241217_2217080.png', 'http://localhost:8080/upload/20241217_2217080.png', '<p><br></p>', 1, 3999, 0, '折旧换新，比省更省', 0, 0, '2024-12-17 22:17:30', 0, '2024-12-17 22:17:30');
+INSERT INTO `tb_newbee_mall_goods_info` VALUES (10966, 'mobile tail摩托罗拉moto g54保护壳（黑色', '摩托罗拉moto g54保护壳', 132, 'http://localhost:8080/upload/20241217_22175352.png', 'http://localhost:8080/upload/20241217_22175352.png', '<p><br></p>', 1, 39, 0, '白条分期', 0, 0, '2024-12-17 22:18:19', 0, '2024-12-17 22:18:19');
+INSERT INTO `tb_newbee_mall_goods_info` VALUES (10967, 'moto 125w 氮化镓gan充电套装', '16:00前完成下单，预计今天（12月17日）发货', 133, 'http://localhost:8080/upload/20241217_2218454.png', 'http://localhost:8080/upload/20241217_2218454.png', '<p><br></p>', 1, 249, 0, '14天无忧退换', 0, 0, '2024-12-17 22:19:14', 0, '2024-12-17 22:19:14');
+INSERT INTO `tb_newbee_mall_goods_info` VALUES (10968, '糖豆儿', '月租6元，送来电显示（来电显示不可取消），套外语音0.12元/分钟、流量0.12元/mb、短信0.1元/条。', 135, 'http://localhost:8080/upload/20241217_22194646.png', 'http://localhost:8080/upload/20241217_22194646.png', '<p><br></p>', 1, 50, 0, '不支持7天无忧退换', 0, 0, '2024-12-17 22:20:06', 0, '2024-12-17 22:20:06');
+INSERT INTO `tb_newbee_mall_goods_info` VALUES (10969, '大白话', '月租15元，套餐包含150分钟国内语音，赠送来电显示，套餐外资费：语音0.15元/分钟、流量0.15元/mb、短信0.1元/条。', 136, 'http://localhost:8080/upload/20241217_22202945.png', 'http://localhost:8080/upload/20241217_22202945.png', '<p><br></p>', 1, 50, 0, '使用联想app下单，享受更多优惠', 0, 0, '2024-12-17 22:21:03', 0, '2024-12-17 22:21:03');
+INSERT INTO `tb_newbee_mall_goods_info` VALUES (10970, '【联想全屋智能】联想小新100s智能投影 樱花白', '全封闭高亮光机|430cvia高亮度丨2x5w高保真音响', 139, 'http://localhost:8080/upload/20241217_22214154.png', 'http://localhost:8080/upload/20241217_22214154.png', '<p><br></p>', 1, 899, 0, '运费险', 0, 0, '2024-12-17 22:22:02', 0, '2024-12-17 22:22:02');
+INSERT INTO `tb_newbee_mall_goods_info` VALUES (10971, '联想小新100p智能投影仪', '570cvia流明丨hdr10丨智慧视觉系统丨影院级音效', 140, 'http://localhost:8080/upload/20241217_22222526.png', 'http://localhost:8080/upload/20241217_22222526.png', '<p><br></p>', 1, 1299, 0, '联想发货&售后', 0, 0, '2024-12-17 22:22:47', 0, '2024-12-17 22:22:47');
+INSERT INTO `tb_newbee_mall_goods_info` VALUES (10972, '【联想全屋智能】联想小新365智能投影仪 风暴灰', '6:00 点前完成下单, 预计 12月21日送达', 141, 'http://localhost:8080/upload/20241217_22231974.png', 'http://localhost:8080/upload/20241217_22231974.png', '<p><br></p>', 1, 1499, 0, '联想自营', 0, 0, '2024-12-17 22:23:39', 0, '2024-12-17 22:23:39');
+INSERT INTO `tb_newbee_mall_goods_info` VALUES (10973, '联想（lenovo）投影悬挂幕布100寸', '14天无忧退换', 142, 'http://localhost:8080/upload/20241217_22240240.png', 'http://localhost:8080/upload/20241217_22240240.png', '<p><br></p>', 1, 199, 0, '花呗分期', 0, 0, '2024-12-17 22:24:32', 0, '2024-12-17 22:24:32');
+INSERT INTO `tb_newbee_mall_goods_info` VALUES (10974, '联想家庭存储中枢 x20', '四核高主频丨航空级铝合金机身', 20, 'http://localhost:8080/upload/20241217_22250164.png', 'http://localhost:8080/upload/20241217_22250164.png', '<p><br></p>', 1, 1699, 0, '政府补贴，折旧换新', 0, 0, '2024-12-17 22:25:18', 0, '2024-12-17 22:25:18');
+INSERT INTO `tb_newbee_mall_goods_info` VALUES (10975, '【联想全屋智能】智能双目室内云台机', '双云台360°无死角监控丨8大算法高效运行丨超清画质 智能全彩夜视', 146, 'http://localhost:8080/upload/20241217_22282170.png', 'http://localhost:8080/upload/20241217_22282170.png', '<p><br></p>', 1, 159, 0, '政府补贴，折旧换新', 0, 0, '2024-12-17 22:28:41', 0, '2024-12-17 22:28:41');
+INSERT INTO `tb_newbee_mall_goods_info` VALUES (10976, '联想智能插座w1', '语音控制丨智能定时丨电量实时监控', 148, 'http://localhost:8080/upload/20241217_22290071.png', 'http://localhost:8080/upload/20241217_22290071.png', '<p><br></p>', 1, 69, 0, '政府补贴，折旧换新', 0, 0, '2024-12-17 22:29:22', 0, '2024-12-17 22:29:22');
+INSERT INTO `tb_newbee_mall_goods_info` VALUES (10977, '联想车载无线充气泵', '¥50.81x3期手续费: 约￥1.15/期', 150, 'http://localhost:8080/upload/20241217_22294785.png', 'http://localhost:8080/upload/20241217_22294785.png', '<p><br></p>', 1, 149, 0, '运费险', 0, 0, '2024-12-17 22:30:17', 0, '2024-12-17 22:30:17');
+INSERT INTO `tb_newbee_mall_goods_info` VALUES (10978, '小新 蓝牙轻音鼠标 岩灰', '【联想选件活动专场，部分商品低至85折】 更多& gt;', 20, 'http://localhost:8080/upload/20241217_22343378.png', 'http://localhost:8080/upload/20241217_22343378.png', '<p><br></p>', 1, 40, 0, '运费险', 0, 0, '2024-12-17 22:34:55', 0, '2024-12-17 22:34:55');
+INSERT INTO `tb_newbee_mall_goods_info` VALUES (10979, '拯救者 鼠标防滑贴 黑色适用m5/m3', '柔软亲肤、防滑吸汗、立体全包', 100, 'http://localhost:8080/upload/20241217_22351360.png', 'http://localhost:8080/upload/20241217_22351360.png', '<p><br></p>', 1, 39, 0, '联想自营', 0, 0, '2024-12-17 22:35:34', 0, '2024-12-17 22:35:34');
+INSERT INTO `tb_newbee_mall_goods_info` VALUES (10980, '小新吨吨杯 墨绿磨砂', '双层抽真空技术、1.5l超大容量、316不锈钢材质', 101, 'http://localhost:8080/upload/20241217_22355325.png', 'http://localhost:8080/upload/20241217_22355325.png', '<p><br></p>', 1, 199, 0, '政府补贴', 0, 0, '2024-12-17 22:36:16', 0, '2024-12-17 22:36:16');
+INSERT INTO `tb_newbee_mall_goods_info` VALUES (10981, '异能者双面鼠标垫 zd6（深海蓝+远山绿）', 'pu皮材质鼠标垫，防刮耐磨，防烫耐高温，双面双色，尺寸：1200mm*600mm*2mm', 102, 'http://localhost:8080/upload/20241217_22365439.png', 'http://localhost:8080/upload/20241217_22365439.png', '<p><br></p>', 1, 69, 0, '14天无忧退换', 0, 0, '2024-12-17 22:37:15', 0, '2024-12-17 22:37:15');
+INSERT INTO `tb_newbee_mall_goods_info` VALUES (10982, '联想小新x吾皇猫联名移动固态硬盘1tb00 猫吃鱼款 1050mb/s', '高速传输最高达1050mb/s、标配a+c双口线、内含可拆卸保护壳+可替换装饰贴', 153, 'http://localhost:8080/upload/20241217_2237483.png', 'http://localhost:8080/upload/20241217_2237483.png', '<p><br></p>', 1, 549, 0, '，，', 0, 0, '2024-12-17 22:38:11', 0, '2024-12-17 22:39:26');
+INSERT INTO `tb_newbee_mall_goods_info` VALUES (10983, '原装yoga/小新固态硬盘升级 1t pm9c1a 2242', '原厂配件，兼容保障，3年保修，购买咨询请拨打4008901566', 152, 'http://localhost:8080/upload/20241217_22393458.png', 'http://localhost:8080/upload/20241217_22393458.png', '<p><br></p>', 1, 759, 0, '1年只换不修+意外+远程', 0, 0, '2024-12-17 22:38:55', 0, '2024-12-17 22:39:38');
+INSERT INTO `tb_newbee_mall_goods_info` VALUES (10984, '联想 thinkplus 真无线蓝牙耳机xt97 黑色', '升级企业会员享2000元企业礼券，首单享加赠。点击升级', 118, 'http://localhost:8080/upload/20241217_2240362.png', 'http://localhost:8080/upload/20241217_2240362.png', '<p><br></p>', 1, 65, 0, '政府补贴，折旧换新，比省更省', 0, 0, '2024-12-17 22:41:05', 0, '2024-12-17 22:41:05');
 
 -- ----------------------------
 -- Table structure for tb_newbee_mall_index_config
 -- ----------------------------
 DROP TABLE IF EXISTS `tb_newbee_mall_index_config`;
 CREATE TABLE `tb_newbee_mall_index_config`  (
-  `config_id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '首页配置项主键id',
-  `config_name` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL DEFAULT '' COMMENT '显示字符(配置搜索时不可为空，其他可为空)',
-  `config_type` tinyint(4) NOT NULL DEFAULT 0 COMMENT '1-搜索框热搜 2-搜索下拉框热搜 3-(首页)热销商品 4-(首页)新品上线 5-(首页)为你推荐',
-  `goods_id` bigint(20) NOT NULL DEFAULT 0 COMMENT '商品id 默认为0',
-  `redirect_url` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL DEFAULT '##' COMMENT '点击后的跳转地址(默认不跳转)',
-  `config_rank` int(11) NOT NULL DEFAULT 0 COMMENT '排序值(字段越大越靠前)',
-  `is_deleted` tinyint(4) NOT NULL DEFAULT 0 COMMENT '删除标识字段(0-未删除 1-已删除)',
+  `config_id` bigint NOT NULL AUTO_INCREMENT COMMENT '首页配置项主键id',
+  `config_name` varchar(50) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NOT NULL DEFAULT '' COMMENT '显示字符(配置搜索时不可为空，其他可为空)',
+  `config_type` tinyint NOT NULL DEFAULT 0 COMMENT '1-搜索框热搜 2-搜索下拉框热搜 3-(首页)热销商品 4-(首页)新品上线 5-(首页)为你推荐',
+  `goods_id` bigint NOT NULL DEFAULT 0 COMMENT '商品id 默认为0',
+  `redirect_url` varchar(100) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NOT NULL DEFAULT '##' COMMENT '点击后的跳转地址(默认不跳转)',
+  `config_rank` int NOT NULL DEFAULT 0 COMMENT '排序值(字段越大越靠前)',
+  `is_deleted` tinyint NOT NULL DEFAULT 0 COMMENT '删除标识字段(0-未删除 1-已删除)',
   `create_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
-  `create_user` int(11) NOT NULL DEFAULT 0 COMMENT '创建者id',
+  `create_user` int NOT NULL DEFAULT 0 COMMENT '创建者id',
   `update_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '最新修改时间',
-  `update_user` int(11) NULL DEFAULT 0 COMMENT '修改者id',
+  `update_user` int NULL DEFAULT 0 COMMENT '修改者id',
   PRIMARY KEY (`config_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 25 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 25 CHARACTER SET = utf8mb3 COLLATE = utf8mb3_general_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of tb_newbee_mall_index_config
@@ -879,23 +957,23 @@ INSERT INTO `tb_newbee_mall_index_config` VALUES (24, '华为 Mate 30 Pro', 5, 1
 -- ----------------------------
 DROP TABLE IF EXISTS `tb_newbee_mall_order`;
 CREATE TABLE `tb_newbee_mall_order`  (
-  `order_id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '订单表主键id',
-  `order_no` varchar(20) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL DEFAULT '' COMMENT '订单号',
-  `user_id` bigint(20) NOT NULL DEFAULT 0 COMMENT '用户主键id',
-  `total_price` int(11) NOT NULL DEFAULT 1 COMMENT '订单总价',
-  `pay_status` tinyint(4) NOT NULL DEFAULT 0 COMMENT '支付状态:0.未支付,1.支付成功,-1:支付失败',
-  `pay_type` tinyint(4) NOT NULL DEFAULT 0 COMMENT '0.无 1.支付宝支付 2.微信支付',
+  `order_id` bigint NOT NULL AUTO_INCREMENT COMMENT '订单表主键id',
+  `order_no` varchar(20) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NOT NULL DEFAULT '' COMMENT '订单号',
+  `user_id` bigint NOT NULL DEFAULT 0 COMMENT '用户主键id',
+  `total_price` int NOT NULL DEFAULT 1 COMMENT '订单总价',
+  `pay_status` tinyint NOT NULL DEFAULT 0 COMMENT '支付状态:0.未支付,1.支付成功,-1:支付失败',
+  `pay_type` tinyint NOT NULL DEFAULT 0 COMMENT '0.无 1.支付宝支付 2.微信支付',
   `pay_time` datetime NULL DEFAULT NULL COMMENT '支付时间',
-  `order_status` tinyint(4) NOT NULL DEFAULT 0 COMMENT '订单状态:0.待支付 1.已支付 2.配货完成 3:出库成功 4.交易成功 -1.手动关闭 -2.超时关闭 -3.商家关闭',
-  `extra_info` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL DEFAULT '' COMMENT '订单body',
-  `user_name` varchar(30) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL DEFAULT '' COMMENT '收货人姓名',
-  `user_phone` varchar(11) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL DEFAULT '' COMMENT '收货人手机号',
-  `user_address` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL DEFAULT '' COMMENT '收货人收货地址',
-  `is_deleted` tinyint(4) NOT NULL DEFAULT 0 COMMENT '删除标识字段(0-未删除 1-已删除)',
+  `order_status` tinyint NOT NULL DEFAULT 0 COMMENT '订单状态:0.待支付 1.已支付 2.配货完成 3:出库成功 4.交易成功 -1.手动关闭 -2.超时关闭 -3.商家关闭',
+  `extra_info` varchar(100) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NOT NULL DEFAULT '' COMMENT '订单body',
+  `user_name` varchar(30) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NOT NULL DEFAULT '' COMMENT '收货人姓名',
+  `user_phone` varchar(11) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NOT NULL DEFAULT '' COMMENT '收货人手机号',
+  `user_address` varchar(100) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NOT NULL DEFAULT '' COMMENT '收货人收货地址',
+  `is_deleted` tinyint NOT NULL DEFAULT 0 COMMENT '删除标识字段(0-未删除 1-已删除)',
   `create_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
   `update_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '最新修改时间',
   PRIMARY KEY (`order_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 21 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 21 CHARACTER SET = utf8mb3 COLLATE = utf8mb3_general_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of tb_newbee_mall_order
@@ -926,16 +1004,16 @@ INSERT INTO `tb_newbee_mall_order` VALUES (20, '15702847670935185', 6, 3999, 1, 
 -- ----------------------------
 DROP TABLE IF EXISTS `tb_newbee_mall_order_item`;
 CREATE TABLE `tb_newbee_mall_order_item`  (
-  `order_item_id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '订单关联购物项主键id',
-  `order_id` bigint(20) NOT NULL DEFAULT 0 COMMENT '订单主键id',
-  `goods_id` bigint(20) NOT NULL DEFAULT 0 COMMENT '关联商品id',
-  `goods_name` varchar(200) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL DEFAULT '' COMMENT '下单时商品的名称(订单快照)',
-  `goods_cover_img` varchar(200) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL DEFAULT '' COMMENT '下单时商品的主图(订单快照)',
-  `selling_price` int(11) NOT NULL DEFAULT 1 COMMENT '下单时商品的价格(订单快照)',
-  `goods_count` int(11) NOT NULL DEFAULT 1 COMMENT '数量(订单快照)',
+  `order_item_id` bigint NOT NULL AUTO_INCREMENT COMMENT '订单关联购物项主键id',
+  `order_id` bigint NOT NULL DEFAULT 0 COMMENT '订单主键id',
+  `goods_id` bigint NOT NULL DEFAULT 0 COMMENT '关联商品id',
+  `goods_name` varchar(200) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NOT NULL DEFAULT '' COMMENT '下单时商品的名称(订单快照)',
+  `goods_cover_img` varchar(200) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NOT NULL DEFAULT '' COMMENT '下单时商品的主图(订单快照)',
+  `selling_price` int NOT NULL DEFAULT 1 COMMENT '下单时商品的价格(订单快照)',
+  `goods_count` int NOT NULL DEFAULT 1 COMMENT '数量(订单快照)',
   `create_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
   PRIMARY KEY (`order_item_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 35 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 35 CHARACTER SET = utf8mb3 COLLATE = utf8mb3_general_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of tb_newbee_mall_order_item
@@ -980,15 +1058,15 @@ INSERT INTO `tb_newbee_mall_order_item` VALUES (34, 20, 10895, 'HUAWEI Mate 30 4
 -- ----------------------------
 DROP TABLE IF EXISTS `tb_newbee_mall_shopping_cart_item`;
 CREATE TABLE `tb_newbee_mall_shopping_cart_item`  (
-  `cart_item_id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '购物项主键id',
-  `user_id` bigint(20) NOT NULL COMMENT '用户主键id',
-  `goods_id` bigint(20) NOT NULL DEFAULT 0 COMMENT '关联商品id',
-  `goods_count` int(11) NOT NULL DEFAULT 1 COMMENT '数量(最大为5)',
-  `is_deleted` tinyint(4) NOT NULL DEFAULT 0 COMMENT '删除标识字段(0-未删除 1-已删除)',
+  `cart_item_id` bigint NOT NULL AUTO_INCREMENT COMMENT '购物项主键id',
+  `user_id` bigint NOT NULL COMMENT '用户主键id',
+  `goods_id` bigint NOT NULL DEFAULT 0 COMMENT '关联商品id',
+  `goods_count` int NOT NULL DEFAULT 1 COMMENT '数量(最大为5)',
+  `is_deleted` tinyint NOT NULL DEFAULT 0 COMMENT '删除标识字段(0-未删除 1-已删除)',
   `create_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
   `update_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '最新修改时间',
   PRIMARY KEY (`cart_item_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 69 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 69 CHARACTER SET = utf8mb3 COLLATE = utf8mb3_general_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of tb_newbee_mall_shopping_cart_item
@@ -999,17 +1077,17 @@ CREATE TABLE `tb_newbee_mall_shopping_cart_item`  (
 -- ----------------------------
 DROP TABLE IF EXISTS `tb_newbee_mall_user`;
 CREATE TABLE `tb_newbee_mall_user`  (
-  `user_id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '用户主键id',
-  `nick_name` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL DEFAULT '' COMMENT '用户昵称',
-  `login_name` varchar(11) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL DEFAULT '' COMMENT '登陆名称(默认为手机号)',
-  `password_md5` varchar(32) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL DEFAULT '' COMMENT 'MD5加密后的密码',
-  `introduce_sign` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL DEFAULT '' COMMENT '个性签名',
-  `address` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL DEFAULT '' COMMENT '收货地址',
-  `is_deleted` tinyint(4) NOT NULL DEFAULT 0 COMMENT '注销标识字段(0-正常 1-已注销)',
-  `locked_flag` tinyint(4) NOT NULL DEFAULT 0 COMMENT '锁定标识字段(0-未锁定 1-已锁定)',
+  `user_id` bigint NOT NULL AUTO_INCREMENT COMMENT '用户主键id',
+  `nick_name` varchar(50) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NOT NULL DEFAULT '' COMMENT '用户昵称',
+  `login_name` varchar(11) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NOT NULL DEFAULT '' COMMENT '登陆名称(默认为手机号)',
+  `password_md5` varchar(32) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NOT NULL DEFAULT '' COMMENT 'MD5加密后的密码',
+  `introduce_sign` varchar(100) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NOT NULL DEFAULT '' COMMENT '个性签名',
+  `address` varchar(100) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NOT NULL DEFAULT '' COMMENT '收货地址',
+  `is_deleted` tinyint NOT NULL DEFAULT 0 COMMENT '注销标识字段(0-正常 1-已注销)',
+  `locked_flag` tinyint NOT NULL DEFAULT 0 COMMENT '锁定标识字段(0-未锁定 1-已锁定)',
   `create_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '注册时间',
   PRIMARY KEY (`user_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 9 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 9 CHARACTER SET = utf8mb3 COLLATE = utf8mb3_general_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of tb_newbee_mall_user
