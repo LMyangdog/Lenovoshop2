@@ -118,11 +118,11 @@ label {
 }
 
 a {
-    color: #1baeae
+    color: #BA2423
 }
 
 a:hover {
-    color: #1baeae;
+    color: #BA2423;
     text-decoration: none
 }
 
@@ -313,7 +313,7 @@ h1 {
 }
 
 .time-item strong {
-    background: #1baeae;
+    background: #BA2423;
     color: #fff;
     line-height: 25px;
     font-size: 15px;
